@@ -41,7 +41,7 @@ def solve(grid):
             cell = i * 9 + j
             val = grid[cell]
             print(val)
-            if val != '':
+            if val != 'n':
                 constraints.append(var_mapping[val][i,j] == 1)
             constraints.append(x1[i, j] + x2[i, j] + x3[i, j] + x4[i, j] + x5[i, j] + x6[i, j] + x7[i, j] + x8[i, j] + x9[i, j] == 1)
 
@@ -57,8 +57,16 @@ def solve(grid):
                     soln[i, j] = ct
         ct += 1
 
+    int_sol = soln.astype(int)
+    json_soln = {}
+    for row in range(0,9):
+        rownum = 'row{}'.format(row)
+        row_str = ''.join(map(str, list(int_sol[row])))
+        print(row_str)
+        json_soln[rownum] = row_str
 
-    return soln
+
+    return json_soln
 
     # def __init__(self, grid):
     #     self.vars = getVars(self)
