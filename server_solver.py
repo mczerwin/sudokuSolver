@@ -60,11 +60,8 @@ def solve(grid):
     int_sol = soln.astype(int)
     json_soln = {}
     for row in range(0,9):
-        rownum = 'row{}'.format(row)
-        row_str = ''.join(map(str, list(int_sol[row])))
-        print(row_str)
-        json_soln[rownum] = row_str
-
+        rownum = 'row{}'.format(row)     
+        json_soln[rownum] = ''.join(map(str, list(int_sol[row])))
 
     return json_soln
 
