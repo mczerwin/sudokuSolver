@@ -1,6 +1,4 @@
-#TODO: rewrite using PuLP instead of cvxpy for docker image
-
-import cvxpy as cp
+from pulp import *
 import numpy as np
 import gurobipy
 import cvxopt
@@ -42,6 +40,7 @@ def solve(grid):
         for j in range(0, 9):
             cell = i * 9 + j
             val = grid[cell]
+            print(val)
             if val != 'n':
                 constraints.append(var_mapping[val][i,j] == 1)
             constraints.append(x1[i, j] + x2[i, j] + x3[i, j] + x4[i, j] + x5[i, j] + x6[i, j] + x7[i, j] + x8[i, j] + x9[i, j] == 1)
@@ -65,9 +64,3 @@ def solve(grid):
         json_soln[rownum] = ''.join(map(str, list(int_sol[row])))
 
     return json_soln
-
-    # def __init__(self, grid):
-    #     self.vars = getVars(self)
-    #     self.constraints = makeConstraints(self, grid)
-
-
