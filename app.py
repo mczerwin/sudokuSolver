@@ -8,6 +8,10 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/test', methods=['GET', 'POST'])
+def test():
+    return '''<h1> HELLO WORLD </h1>'''
+
 @app.route('/solve', methods=['POST'])
 def solve():
     print(f'request: {request}')
