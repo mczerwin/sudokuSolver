@@ -35,3 +35,7 @@ def formatBody(req):
 
 def formatResponse(solved):
     return str(np.reshape(solved, (1,81))).replace('.', '').strip("[]").replace(' ', '')
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=80)
